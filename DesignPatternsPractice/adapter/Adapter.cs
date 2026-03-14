@@ -1,14 +1,11 @@
 
 
-SMSNotificationAdapter smsNotification = new();
-smsNotification.Notify("Hello, World!");
-
-interface INotification
+interface INotifications
 {
     void Notify(string message);
 }
 
-class Notification : INotification
+class Notification : INotifications
 {
     public void Notify(string message)
     {
@@ -16,7 +13,7 @@ class Notification : INotification
     }
 }
 
-class SMSNotification
+class SMSNotifications
 {
     public void SendSMS(string message)
     {
@@ -26,9 +23,9 @@ class SMSNotification
 
 class SMSNotificationAdapter : INotification
 {
-    private readonly SMSNotification _smsNotification;
+    private readonly SMSNotifications _smsNotification;
 
-    public SMSNotificationAdapter(SMSNotification smsNotification)
+    public SMSNotificationAdapter(SMSNotifications smsNotification)
     {
         _smsNotification = smsNotification;
     }
